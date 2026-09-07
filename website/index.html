@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gearx KAVACH | Smart Helmet for Safer Rides</title>
+    <meta
+      name="description"
+      content="Gearx KAVACH is a smart helmet lineup with accident detection, live monitoring, GPS navigation, SOS, dual cameras, LoRa ecosystem, and long battery life."
+    >
+
+    <!-- Fonts: update these links if you want a different brand typography later. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <!-- Decorative cursor glow controlled from script.js. It is hidden for reduced-motion users. -->
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Header: main navigation and mobile menu button. -->
+    <header class="site-header" data-header>
+      <a class="brand" href="#home" aria-label="Gearx KAVACH home">
+        <span class="brand-name">Gear<span>x</span></span>
+        <span class="brand-subtitle">KAVACH smart helmet</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#catalog">Catalog</a>
+        <a href="#features">Features</a>
+        <a href="#vision">Vision</a>
+        <a href="#prebook">Prebook</a>
+      </nav>
+
+      <a class="header-button" href="#prebook">Prebook Now</a>
+
+      <button class="menu-button" type="button" aria-label="Open menu" data-menu-button>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main id="home">
+      <!-- Hero: first impression and strongest product promise. -->
+      <section class="hero">
+        <img class="hero-image" src="assets/main.png" alt="KAVACH smart helmet by Gearx">
+        <div class="hero-shade"></div>
+        <div class="hero-scan" aria-hidden="true"></div>
+
+        <div class="hero-content reveal">
+          <p class="eyebrow">Smart protection for modern riders</p>
+          <h1>KAVACH by Gearx</h1>
+          <p class="hero-copy">
+            A smart helmet ecosystem designed for accident detection, live monitoring,
+            navigation, SOS alerts, dual camera recording, and connected rider safety.
+          </p>
+
+          <div class="hero-actions">
+            <a class="primary-button" href="#catalog">View Products</a>
+            <a class="secondary-button" href="#prebook">Start Prebooking</a>
+          </div>
+        </div>
+
+        <div class="hero-metrics reveal" aria-label="KAVACH product highlights">
+          <article>
+            <strong>10+</strong>
+            <span>Smart features</span>
+          </article>
+          <article>
+            <strong>3</strong>
+            <span>Product models</span>
+          </article>
+          <article>
+            <strong>24/7</strong>
+            <span>Safety mindset</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- Highlight strip: moving text creates energy without adding extra maintenance. -->
+      <section class="ticker" aria-label="KAVACH highlights">
+        <div class="ticker-track">
+          <span>Accident Detection</span>
+          <span>Live GPS</span>
+          <span>SOS System</span>
+          <span>Dual Camera</span>
+          <span>LoRa Ecosystem</span>
+          <span>Long Battery Life</span>
+          <span>Loop Recording</span>
+          <span>Smart Assist</span>
+          <span>Accident Detection</span>
+          <span>Live GPS</span>
+        </div>
+      </section>
+
+      <!-- Product catalog: edit product names, prices, and feature tags here. -->
+      <section class="section catalog-section" id="catalog">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Product catalog</p>
+          <h2>Choose your KAVACH</h2>
+          <p>
+            A clear model ladder helps customers understand what to buy today and what
+            Gearx can expand tomorrow.
+          </p>
+        </div>
+
+        <div class="catalog-grid">
+          <article class="product-card reveal" data-product="KAVACH 1.0">
+            <img src="assets/kavach-1.png" alt="KAVACH 1.0 helmet">
+            <div class="product-body">
+              <span class="product-tier">Entry model</span>
+              <h3>KAVACH 1.0</h3>
+              <p class="price">Rs. 1,500 onwards</p>
+              <p>Affordable protective helmet for early customers and daily riders.</p>
+              <ul class="product-tags">
+                <li>Good protection</li>
+                <li>Comfort fit</li>
+                <li>Future features space</li>
+              </ul>
+              <button class="product-button" type="button" data-select-product="KAVACH 1.0">
+                Prebook KAVACH 1.0
+              </button>
+            </div>
+          </article>
+
+          <article class="product-card featured reveal" data-product="KAVACH 2.0">
+            <img src="assets/kavach-2.png" alt="KAVACH 2.0 smart helmet">
+            <div class="product-body">
+              <span class="product-tier">Smart choice</span>
+              <h3>KAVACH 2.0</h3>
+              <p class="price">Rs. 7,999 onwards</p>
+              <p>Smart helmet for riders who want connected safety and upgrade-ready technology.</p>
+              <ul class="product-tags">
+                <li>SOS system</li>
+                <li>Smart assist</li>
+                <li>Future feature expansion</li>
+              </ul>
+              <button class="product-button" type="button" data-select-product="KAVACH 2.0">
+                Prebook KAVACH 2.0
+              </button>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-product="KAVACH Pro">
+            <img src="assets/kavach-pro.png" alt="KAVACH Pro premium smart helmet">
+            <div class="product-body">
+              <span class="product-tier">Premium product</span>
+              <h3>KAVACH Pro</h3>
+              <p class="price">Rs. 35,999 onwards</p>
+              <p>Premium KAVACH experience for customers who want the most advanced helmet.</p>
+              <ul class="product-tags">
+                <li>Dual cam setup</li>
+                <li>Live monitoring</li>
+                <li>Premium finish</li>
+              </ul>
+              <button class="product-button" type="button" data-select-product="KAVACH Pro">
+                Prebook KAVACH Pro
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Visual product story: uses your product images to make the site feel high-value. -->
+      <section class="section story-section">
+        <div class="story-copy reveal">
+          <p class="eyebrow">Marketing story</p>
+          <h2>Ride smart. Ride safe. Ride with KAVACH.</h2>
+          <p>
+            KAVACH is not only a helmet. It is a rider safety platform that brings
+            protection, connectivity, recording, alerts, and navigation into one product.
+          </p>
+        </div>
+
+        <div class="story-gallery reveal" data-gallery>
+          <div class="gallery-controls">
+            <button class="gallery-button active" type="button" data-image="assets/feature-rider.png">
+              Rider System
+            </button>
+            <button class="gallery-button" type="button" data-image="assets/features-grid.png">
+              Feature Board
+            </button>
+            <button class="gallery-button" type="button" data-image="assets/hero-kavach.png">
+              Brand Visual
+            </button>
+            <!-- <button class="gallery-button" type="button" data-image="assets/kavach-2.png">
+              KAVACH 2.0
+            </button> -->
+          </div>
+          <img class="gallery-image" src="assets/feature-rider.png" alt="KAVACH smart helmet rider feature system" data-gallery-image>
+        </div>
+      </section>
+
+      <!-- Feature section: add, remove, or edit feature cards in this grid. -->
+      <section class="section feature-section" id="features">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Product features</p>
+          <h2>Technology that engages safety-first customers</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <span>01</span>
+            <h3>Accident Detection</h3>
+            <p>Detects crash-like events and supports live monitoring for faster response.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span>02</span>
+            <h3>Live GPS Navigation</h3>
+            <p>Helps riders follow routes, share location, and stay aware during travel.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span>03</span>
+            <h3>Smart Assist</h3>
+            <p>Supports connected riding with assistive controls for calls, music, and alerts.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span>04</span>
+            <h3>Good Protection</h3>
+            <p>Designed around rider safety, comfort, visibility, and protective confidence.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span>05</span>
+            <h3>Smart Technology</h3>
+            <p>Built as a technology platform that can grow with future Gearx upgrades.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span>06</span>
+            <h3>SOS System</h3>
+            <p>Emergency alert capability for critical riding moments and quick contact.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span>07</span>
+            <h3>LoRa Ecosystem</h3>
+            <p>Space for long-range connected rider features and future ecosystem expansion.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span>08</span>
+            <h3>Long Battery Life</h3>
+            <p>Created for longer rides with dependable power for connected features.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span>09</span>
+            <h3>Dual Cam Setup</h3>
+            <p>Front and rear camera support for recording rides and improving awareness.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span>10</span>
+            <h3>Loop Recording</h3>
+            <p>Records continuously by replacing older clips, keeping important ride footage available.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Startup vision: builds trust for Gearx as a company, not only a product. -->
+      <section class="section vision-section" id="vision">
+        <div class="vision-panel reveal">
+          <div>
+            <p class="eyebrow">Startup vision</p>
+            <h2>Gearx wants every rider to feel protected, connected, and confident.</h2>
+          </div>
+          <p>
+            Our vision is to build a rider safety ecosystem for India and beyond, where
+            helmets become intelligent companions. KAVACH starts with smart protection,
+            and grows into a platform for monitoring, emergency response, navigation,
+            connected communities, and safer roads.
+          </p>
+        </div>
+
+        <div class="vision-points">
+          <article class="vision-card reveal">
+            <h3>Safety First</h3>
+            <p>Every feature should help riders avoid danger, respond faster, or ride with more confidence.</p>
+          </article>
+          <article class="vision-card reveal">
+            <h3>Made To Scale</h3>
+            <p>The product catalog leaves room for future features, accessories, apps, and ecosystem upgrades.</p>
+          </article>
+          <article class="vision-card reveal">
+            <h3>Client Focused</h3>
+            <p>The page is designed to convert visitors into prebooking leads and early supporters.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Prebooking section: form is handled locally in script.js for now. -->
+      <section class="section prebook-section" id="prebook">
+        <div class="prebook-card reveal">
+          <div class="prebook-copy">
+            <p class="eyebrow">Prebooking</p>
+            <h2>Reserve your KAVACH</h2>
+            <p>
+              Collect customer interest before launch. Later, this form can be connected
+              to Google Sheets, email, WhatsApp, or a backend database.
+            </p>
+          </div>
+
+          <form class="prebook-form" data-prebook-form>
+            <label>
+              Full name
+              <input type="text" name="name" placeholder="Enter your name" required>
+            </label>
+
+            <label>
+              Phone number
+              <input type="tel" name="phone" placeholder="Enter phone number" required>
+            </label>
+
+            <label>
+              Product
+              <select name="product" data-product-select>
+                <option>KAVACH 1.0</option>
+                <option>KAVACH 2.0</option>
+                <option>KAVACH Pro</option>
+              </select>
+            </label>
+
+            <label>
+              City
+              <input type="text" name="city" placeholder="Your city">
+            </label>
+
+            <button class="primary-button" type="submit">Submit Prebooking</button>
+            <p class="form-message" data-form-message>No payment required. This records customer interest only.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Gearx KAVACH</span>
+      <span>Smart helmet. Safer rides. Future-ready ecosystem.</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
