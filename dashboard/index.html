@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>KAVACH | Smart Helmet Dashboard</title>
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Dashboard CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            K
+        </div>
+
+        <div>
+            <h2>KAVACH</h2>
+            <span>Smart Helmet</span>
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+        <a
+            href="#dashboard"
+            class="nav-item active"
+        >
+            <span class="nav-icon">⌂</span>
+            Dashboard
+        </a>
+
+
+        <a
+            href="#sensors"
+            class="nav-item"
+        >
+            <span class="nav-icon">◉</span>
+            Sensors
+        </a>
+
+
+        <a
+            href="#location"
+            class="nav-item"
+        >
+            <span class="nav-icon">⌖</span>
+            Location
+        </a>
+
+
+        <a
+            href="#accident"
+            class="nav-item"
+        >
+            <span class="nav-icon">⚠</span>
+            Safety
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="connection-mini">
+
+            <span
+                id="sidebarStatusDot"
+                class="status-dot offline"
+            ></span>
+
+            <div>
+
+                <strong id="sidebarStatus">
+                    Helmet Offline
+                </strong>
+
+                <small>
+                    ESP32 Connection
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+<!-- =====================================================
+     TOP HEADER
+===================================================== -->
+
+<header class="topbar">
+
+    <div>
+
+        <p class="eyebrow">
+            KAVACH CONTROL CENTER
+        </p>
+
+        <h1>
+            Smart Helmet Dashboard
+        </h1>
+
+    </div>
+
+
+    <div class="helmet-status">
+
+        <span
+            id="helmetStatusDot"
+            class="status-dot offline"
+        ></span>
+
+        <div>
+
+            <strong id="helmetStatus">
+                Helmet Disconnected
+            </strong>
+
+            <small id="lastUpdate">
+                Waiting for connection
+            </small>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     CONNECTION PANEL
+===================================================== -->
+
+<section class="connection-panel">
+
+    <div class="connection-info">
+
+        <div class="panel-icon">
+            ⛓
+        </div>
+
+        <div>
+
+            <h3>
+                Connect Your Helmet
+            </h3>
+
+            <p>
+                Enter the IP address shown by your ESP32.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="connection-controls">
+
+        <input
+            type="text"
+            id="helmetIP"
+            placeholder="Example: 192.168.1.100"
+            autocomplete="off"
+        >
+
+        <button
+            id="connectBtn"
+            class="primary-btn"
+        >
+            Connect Helmet
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section
+    id="dashboard"
+    class="dashboard-section"
+>
+
+
+<!-- =====================================================
+     STATUS CARDS
+===================================================== -->
+
+<div class="section-title">
+
+    <div>
+
+        <span>
+            SYSTEM OVERVIEW
+        </span>
+
+        <h2>
+            Helmet Status
+        </h2>
+
+    </div>
+
+</div>
+
+
+<div class="status-grid">
+
+
+    <!-- Helmet -->
+
+    <div class="status-card">
+
+        <div class="card-top">
+
+            <span class="card-label">
+                Helmet
+            </span>
+
+            <span
+                id="helmetCardDot"
+                class="status-dot offline"
+            ></span>
+
+        </div>
+
+        <strong id="helmetCardStatus">
+            Disconnected
+        </strong>
+
+        <small>
+            ESP32 connection
+        </small>
+
+    </div>
+
+
+    <!-- MPU -->
+
+    <div class="status-card">
+
+        <div class="card-top">
+
+            <span class="card-label">
+                MPU6500
+            </span>
+
+            <span
+                id="mpuDot"
+                class="status-dot offline"
+            ></span>
+
+        </div>
+
+        <strong id="mpuStatus">
+            Checking...
+        </strong>
+
+        <small>
+            Motion sensor
+        </small>
+
+    </div>
+
+
+    <!-- WiFi -->
+
+    <div class="status-card">
+
+        <div class="card-top">
+
+            <span class="card-label">
+                Wi-Fi
+            </span>
+
+            <span
+                id="wifiDot"
+                class="status-dot offline"
+            ></span>
+
+        </div>
+
+        <strong id="wifiStatus">
+            Unknown
+        </strong>
+
+        <small>
+            Helmet network
+        </small>
+
+    </div>
+
+
+    <!-- LoRa -->
+
+    <div class="status-card">
+
+        <div class="card-top">
+
+            <span class="card-label">
+                LoRa
+            </span>
+
+            <span
+                id="loraDot"
+                class="status-dot offline"
+            ></span>
+
+        </div>
+
+        <strong id="loraStatus">
+            Unknown
+        </strong>
+
+        <small>
+            Communication
+        </small>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SENSOR SECTION
+===================================================== -->
+
+<section
+    id="sensors"
+    class="sensor-section"
+>
+
+
+<div class="section-title">
+
+    <div>
+
+        <span>
+            LIVE SENSOR DATA
+        </span>
+
+        <h2>
+            Motion Monitoring
+        </h2>
+
+    </div>
+
+</div>
+
+
+
+<div class="sensor-grid">
+
+
+    <!-- G FORCE -->
+
+    <div class="sensor-card gforce-card">
+
+        <div class="sensor-card-header">
+
+            <span>
+                G-FORCE
+            </span>
+
+            <span class="sensor-icon">
+                G
+            </span>
+
+        </div>
+
+
+        <div class="sensor-main-value">
+
+            <span id="gForce">
+                0.00
+            </span>
+
+            <small>
+                G
+            </small>
+
+        </div>
+
+
+        <div class="sensor-footer">
+
+            <span>
+                Accident threshold
+            </span>
+
+            <strong>
+                2.0 G
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ACCELEROMETER -->
+
+    <div class="sensor-card">
+
+        <div class="sensor-card-header">
+
+            <span>
+                ACCELEROMETER
+            </span>
+
+            <span class="sensor-icon">
+                ACC
+            </span>
+
+        </div>
+
+
+        <div class="axis-list">
+
+            <div class="axis-row">
+
+                <span class="axis-label x">
+                    X
+                </span>
+
+                <strong id="accX">
+                    0.00 G
+                </strong>
+
+            </div>
+
+
+            <div class="axis-row">
+
+                <span class="axis-label y">
+                    Y
+                </span>
+
+                <strong id="accY">
+                    0.00 G
+                </strong>
+
+            </div>
+
+
+            <div class="axis-row">
+
+                <span class="axis-label z">
+                    Z
+                </span>
+
+                <strong id="accZ">
+                    0.00 G
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- GYROSCOPE -->
+
+    <div class="sensor-card">
+
+        <div class="sensor-card-header">
+
+            <span>
+                GYROSCOPE
+            </span>
+
+            <span class="sensor-icon">
+                GYR
+            </span>
+
+        </div>
+
+
+        <div class="axis-list">
+
+            <div class="axis-row">
+
+                <span class="axis-label x">
+                    X
+                </span>
+
+                <strong id="gyroX">
+                    0.0 °/s
+                </strong>
+
+            </div>
+
+
+            <div class="axis-row">
+
+                <span class="axis-label y">
+                    Y
+                </span>
+
+                <strong id="gyroY">
+                    0.0 °/s
+                </strong>
+
+            </div>
+
+
+            <div class="axis-row">
+
+                <span class="axis-label z">
+                    Z
+                </span>
+
+                <strong id="gyroZ">
+                    0.0 °/s
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ROTATION -->
+
+    <div class="sensor-card">
+
+        <div class="sensor-card-header">
+
+            <span>
+                ROTATION
+            </span>
+
+            <span class="sensor-icon">
+                ↻
+            </span>
+
+        </div>
+
+
+        <div class="sensor-main-value">
+
+            <span id="gyroMagnitude">
+                0.0
+            </span>
+
+            <small>
+                °/s
+            </small>
+
+        </div>
+
+
+        <div class="sensor-footer">
+
+            <span>
+                Gyroscope magnitude
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     LOCATION
+===================================================== -->
+
+<section
+    id="location"
+    class="location-section"
+>
+
+
+<div class="section-title">
+
+    <div>
+
+        <span>
+            GPS TRACKING
+        </span>
+
+        <h2>
+            Live Location
+        </h2>
+
+    </div>
+
+
+    <div
+        id="gpsStatus"
+        class="gps-status"
+    >
+
+        <span
+            id="gpsDot"
+            class="status-dot offline"
+        ></span>
+
+        <span id="gpsText">
+            Waiting for GPS
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<div class="location-layout">
+
+
+    <!-- MAP -->
+
+    <div class="map-card">
+
+        <div
+            id="map"
+            class="map-container"
+        >
+
+            <div class="map-placeholder">
+
+                <div class="map-placeholder-icon">
+                    ⌖
+                </div>
+
+                <p>
+                    Google Map will appear here
+                </p>
+
+                <small>
+                    Waiting for phone location
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- LOCATION DATA -->
+
+    <div class="location-card">
+
+        <div class="location-header">
+
+            <span class="sensor-icon">
+                GPS
+            </span>
+
+            <div>
+
+                <h3>
+                    Phone Location
+                </h3>
+
+                <small>
+                    Browser GPS
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="location-values">
+
+
+            <div class="location-value">
+
+                <span>
+                    Latitude
+                </span>
+
+                <strong id="latitude">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="location-value">
+
+                <span>
+                    Longitude
+                </span>
+
+                <strong id="longitude">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="location-value">
+
+                <span>
+                    Accuracy
+                </span>
+
+                <strong id="gpsAccuracy">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="location-value">
+
+                <span>
+                    Speed
+                </span>
+
+                <strong id="gpsSpeed">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="location-value">
+
+                <span>
+                    Heading
+                </span>
+
+                <strong id="gpsHeading">
+                    --
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="locationBtn"
+            class="secondary-btn"
+        >
+            Enable Phone GPS
+        </button>
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     ACCIDENT / SAFETY
+===================================================== -->
+
+<section
+    id="accident"
+    class="accident-section"
+>
+
+
+<div class="section-title">
+
+    <div>
+
+        <span>
+            SAFETY SYSTEM
+        </span>
+
+        <h2>
+            Accident Detection
+        </h2>
+
+    </div>
+
+</div>
+
+
+
+<div
+    id="accidentPanel"
+    class="accident-panel normal"
+>
+
+
+    <!-- NORMAL STATE -->
+
+    <div
+        id="normalAccidentState"
+        class="accident-state"
+    >
+
+        <div class="accident-icon safe">
+            ✓
+        </div>
+
+
+        <div>
+
+            <span class="accident-label">
+                CURRENT STATUS
+            </span>
+
+            <h3>
+                No Accident Detected
+            </h3>
+
+            <p>
+                Kavach is monitoring helmet movement.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ALERT STATE -->
+
+    <div
+        id="accidentAlertState"
+        class="accident-state hidden"
+    >
+
+        <div class="accident-icon danger">
+            !
+        </div>
+
+
+        <div class="accident-alert-content">
+
+            <span class="accident-label">
+                EMERGENCY ALERT
+            </span>
+
+            <h3>
+                ACCIDENT DETECTED
+            </h3>
+
+            <p>
+                High impact detected by MPU6500.
+            </p>
+
+
+            <div class="countdown-box">
+
+                <span>
+                    Emergency alert will be sent in
+                </span>
+
+                <strong id="countdown">
+                    10
+                </strong>
+
+                <span>
+                    seconds
+                </span>
+
+            </div>
+
+
+            <button
+                id="terminateBtn"
+                class="terminate-btn"
+            >
+                TERMINATE ALERT
+            </button>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</section>
+
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <span>
+        KAVACH Smart Helmet
+    </span>
+
+    <span>
+        ESP32-S3 • MPU6500 • LoRa
+    </span>
+
+</footer>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     GOOGLE MAPS
+===================================================== -->
+
+<!--
+    IMPORTANT:
+    Replace YOUR_GOOGLE_MAPS_API_KEY with your
+    Google Maps JavaScript API key.
+
+    Example:
+
+    https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=initMap
+
+-->
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"
+    async
+    defer
+></script>
+
+
+
+<!-- =====================================================
+     DASHBOARD JAVASCRIPT
+===================================================== -->
+
+<script
+    src="script.js"
+></script>
+
+
+</body>
+
+</html>
