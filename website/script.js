@@ -8,7 +8,10 @@
    5. Product image gallery
    6. Prebooking form demo interaction
    ========================================================= */
-
+// Initialize EmailJS
+emailjs.init({
+  publicKey: "Jr4ohoC95bqD6JEtk"
+});
 const header = document.querySelector("[data-header]");
 const menuButton = document.querySelector("[data-menu-button]");
 const cursorGlow = document.querySelector(".cursor-glow");
@@ -99,16 +102,47 @@ productButtons.forEach((button) => {
   });
 });
 
-// Demo prebooking behavior. Replace this later with a backend or Google Sheet API.
+// Send prebooking details through EmailJS.
 if (prebookForm && formMessage) {
-  prebookForm.addEventListener("submit", (event) => {
+  prebookForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const data = new FormData(prebookForm);
-    const name = data.get("name")?.toString().trim() || "Rider";
-    const product = data.get("product")?.toString() || "KAVACH";
+    const submitButton = prebookForm.querySelector('button[type="submit"]');
 
-    formMessage.textContent = `Thank you, ${name}. Your interest for ${product} has been recorded. Gearx will contact you soon.`;
-    prebookForm.reset();
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    formMessage.textContent = "Submitting your prebooking...";
+
+    try {
+      await emailjs.sendForm(
+        "service_7jrvgqp",
+        "template_0ur8pai",
+        prebookForm
+      );
+
+      const name =
+        prebookForm.querySelector('[name="name"]')?.value.trim() || "Rider";
+
+      const product =
+        prebookForm.querySelector('[name="product"]')?.value || "KAVACH";
+
+      formMessage.textContent =
+        `Thank you, ${name}! Your prebooking for ${product} has been submitted successfully. We will contact you soon.`;
+
+      prebookForm.reset();
+    } catch (error) {
+  console.error("EmailJS error:", error);
+
+  formMessage.textContent =
+    `Email failed: ${error?.text || error?.message || "Unknown error"}`;
+
+  alert(
+    `EmailJS Error:\n${error?.text || error?.message || JSON.stringify(error)}`
+  );
+} 
+    finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit Prebooking";
+    }
   });
 }
